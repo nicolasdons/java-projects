@@ -12,11 +12,22 @@ double taxa = 0.01;
 
     }
 
-        public void taxarsalario(double saldo) {
+        public double taxarsalario(double saldo) {
         this.saldo = saldo * taxa - saldo;
         System.out.println("Seu saldo foi taxado e atualizado para"+saldo);
+        return this.saldo;
         }
+
+    public double getTaxa() {
+        return taxa;
     }
+
+    public void setTaxa(double taxa) {
+        this.taxa = taxa;
+
+
+    }
+}
 
 
 
