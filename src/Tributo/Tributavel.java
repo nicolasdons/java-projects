@@ -1,4 +1,6 @@
 package Tributo;
 
-public interface Tributavel {
+import Contas.Conta;
+
+public interface Tributavel  {
 }
