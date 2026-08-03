@@ -1,4 +1,6 @@
-package Contas;
+package contas;
+
+import tributo.Tributavel;
 
 public class Conta {
     String nome;
@@ -7,7 +9,7 @@ public class Conta {
     Double saldo;
 
 
-    protected Conta(String nome, double senha, String cpf, double saldo){
+    public Conta(String nome, double senha, String cpf, double saldo){
         this.nome = nome;
         this.senha = senha;
         this.cpf = cpf;
@@ -23,6 +25,12 @@ public class Conta {
         public void depoisto(double valor){
         this.saldo += valor;
         }
+
+    public void pagarTributo(Tributavel t) {
+        double valor = t.gettaxarsalario();
+        this.saque(valor);
+    }
+
 
     public String getNome() {
         return nome;
