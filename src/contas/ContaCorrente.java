@@ -2,7 +2,7 @@ package contas; // 1. Corrigido para minúsculo (combina com o caminho da pasta)
 
 import tributo.Tributavel;
 
-class ContaCorrente extends Conta implements Tributavel {
+public class ContaCorrente extends Conta implements Tributavel {
 
     public ContaCorrente(String titular, int numero, String cpf, double saldoInicial) {
         super(titular, numero, cpf, saldoInicial);

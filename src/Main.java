@@ -1,10 +1,10 @@
-import contas.Contacorrente;
+import contas.ContaCorrente;
 import seguro.Segurodevida;
 
 public class Main {
     public static void main(String[] args) {
 
-        Contacorrente cc = new Contacorrente("Joao", 12345, "555666777", 5000.0);
+        ContaCorrente cc = new ContaCorrente("Joao", 12345, "555666777", 5000.0);
 
         System.out.println("Saldo inicial: R$ " + cc.getSaldo());
 
