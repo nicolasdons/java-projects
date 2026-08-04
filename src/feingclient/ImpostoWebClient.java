@@ -1,13 +1,10 @@
-package feingclient;
+package feingclient; // Verifique se o nome do pacote está com 'n' mesmo
 
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
-public interface FeignClient {
-
-    @org.springframework.cloud.openfeign.FeignClient(name = "serviço-impostos", url = "https://api.hgbrasil.com")
-   public interface feignClient {
-        @GetMapping("/taxa-atual")
-        double getTaxaWeb();
-    }
-
+@FeignClient(name = "servico-impostos", url = "https://jsonplaceholder.typicode.com")
+public interface ImpostoWebClient {
+    @GetMapping("/todos/1")
+    Object getTaxaWeb();
 }

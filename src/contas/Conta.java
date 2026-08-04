@@ -1,5 +1,6 @@
 package contas;
 
+
 import tributo.Tributavel;
 
 public class Conta {
