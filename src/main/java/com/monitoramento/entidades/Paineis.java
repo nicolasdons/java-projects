@@ -1,16 +1,31 @@
-package entidades;
+package com.monitoramento.entidades;
+
+import jakarta.persistence.*;
+
 @Entity
 @Table(name = "tb_painel")
 public class Paineis {
 
     @Id
-    @GeneratedValue(strategy = Generation.Type.INDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String codigo;
     private Double capacidadeMax;
     private Integer posicaoLinha;
     private Integer posicaoColuna;
+
+    public Paineis(){
+
+    }
+
+    public Paineis(String codigo, Double capacidadeMax, Integer posicaoLinha, Integer posicaoColuna) {
+        this.codigo = codigo;
+        this.capacidadeMax = capacidadeMax;
+        this.posicaoLinha = posicaoLinha;
+        this.posicaoColuna = posicaoColuna;
+    }
+
 
 
     public Long getId() {
