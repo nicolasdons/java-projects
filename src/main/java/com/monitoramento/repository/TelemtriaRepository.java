@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface TelemteriaRepository extends JpaRepository<Telemetria, Long> {
 
-    List<Telemetria> findByPainelIdOrderByDataHoraDesc(Long paineisId);
+    List<Telemetria> findByPainelIdOrderByDataHoraDesc(Long painelId);
 }
