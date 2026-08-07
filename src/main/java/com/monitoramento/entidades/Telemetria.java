@@ -12,12 +12,16 @@ public class Telemetria {
 
     double temperatura;
     double energiagerada;
-    private LocalDateTime datahora;
+    private LocalDateTime dataHora;
 
 
     @ManyToOne
     @JoinColumn(name = "painel_id")
     private Paineis painel;
+
+    public Telemetria() {
+
+    }
 
 
     public Long getId() {
@@ -49,11 +53,11 @@ public class Telemetria {
     }
 
     public LocalDateTime getDatahora() {
-        return datahora;
+        return dataHora;
     }
 
     public void setDatahora(LocalDateTime datahora) {
-        this.datahora = datahora;
+        this.dataHora = dataHora;
     }
 
     public Paineis getPainel() {
