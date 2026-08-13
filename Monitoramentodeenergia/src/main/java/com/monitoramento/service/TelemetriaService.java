@@ -3,7 +3,7 @@ package com.monitoramento.service;
 import com.monitoramento.entidades.Paineis;
 import com.monitoramento.entidades.Telemetria;
 import com.monitoramento.repository.PainelRepository;
-import com.monitoramento.repository.TelemtriaRepository;
+import com.monitoramento.repository.TelemetriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -13,10 +13,10 @@ import java.util.List;
 import java.util.Random;
 
 @Service
-public class TelemtriaService {
+public class TelemetriaService {
 
     @Autowired
-    private TelemtriaRepository telemteriaRepository;
+    private TelemetriaRepository telemteriaRepository;
 
     @Autowired
     private PainelRepository painelRepository;

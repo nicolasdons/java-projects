@@ -1,6 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
-
+<html lang="pt-br">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,45 +10,50 @@
 <body>
 
   <header>
-    <h1> Sistema de Monitoramento Solar</h1>
-    <p> Dados Simulados em tempo real</p>
-</header>
-    <main class="container">
+    <h1>Sistema de Monitoramento Solar</h1>
+    <p>Dados em tempo real da planta fotovoltaica</p>
+  </header>
 
-      <section class="cards-grid">
-        <div class="card">
-        <h3>Potência Atual</h3>
-        <p class="valor"><span id="potencia">0</span> W</p>
+  <main class="container">
+
+    
+    <section class="secao">
+      <h2>Métricas Gerais</h2>
+      <div class="metrics-grid">
+        <div class="card metric-card">
+          <h3>POTÊNCIA ATUAL</h3>
+          <p class="valor"><span id="potencia">0</span> W</p>
         </div>
-
-        <div class="card">
-          <h3>Tensão (PV)</h3>
+        <div class="card metric-card">
+          <h3>TENSÃO (PV)</h3>
           <p class="valor"><span id="tensao">0</span> V</p>
         </div>
-
-        <div class="card">
-          <h3>Corrente</h3>
+        <div class="card metric-card">
+          <h3>CORRENTE</h3>
           <p class="valor"><span id="corrente">0</span> A</p>
         </div>
-
-        <div class="card">
-          <h3>Temp. do Painel</h3>
+        <div class="card metric-card">
+          <h3>TEMP. DO PAINEL</h3>
           <p class="valor"><span id="temperatura">0</span> °C</p>
         </div>
-      </section>
+      </div>
+    </section>
 
+    <section class="secao">
+      <h2>Painéis Solares</h2>
+      <div id="paineis-container" class="paineis-grid">
+        <!-- O JS vai inserir TODOS os cards dos painéis de forma padronizada aqui -->
+      </div>
+    </section>
 
-      <section class="grafico-container">
-        <h2>Histórico de Potência (Watts)</h2>
-        <canvas id="graficoSolar"></canvas>
-      </section>
-    </main>
+    
+    <section class="secao grafico-container">
+      <h2>Histórico de Potência (Watts)</h2>
+      <canvas id="graficoSolar"></canvas>
+    </section>
 
+  </main>
 
-
-
-    <script src="script.js"></script>
-    </body>
+  <script src="js/app.js"></script>
+</body>
 </html>
-
-
