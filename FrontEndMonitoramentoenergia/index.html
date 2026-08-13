@@ -1,0 +1,55 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard Solar - Monitoramento</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <header>
+    <h1> Sistema de Monitoramento Solar</h1>
+    <p> Dados Simulados em tempo real</p>
+</header>
+    <main class="container">
+
+      <section class="cards-grid">
+        <div class="card">
+        <h3>Potência Atual</h3>
+        <p class="valor"><span id="potencia">0</span> W</p>
+        </div>
+
+        <div class="card">
+          <h3>Tensão (PV)</h3>
+          <p class="valor"><span id="tensao">0</span> V</p>
+        </div>
+
+        <div class="card">
+          <h3>Corrente</h3>
+          <p class="valor"><span id="corrente">0</span> A</p>
+        </div>
+
+        <div class="card">
+          <h3>Temp. do Painel</h3>
+          <p class="valor"><span id="temperatura">0</span> °C</p>
+        </div>
+      </section>
+
+
+      <section class="grafico-container">
+        <h2>Histórico de Potência (Watts)</h2>
+        <canvas id="graficoSolar"></canvas>
+      </section>
+    </main>
+
+
+
+
+    <script src="script.js"></script>
+    </body>
+</html>
+
+
