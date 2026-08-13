@@ -1,61 +1,40 @@
 
-function gerarDadosSolares() {
-  const tensao = (34 + Math.random() * 4).toFixed(1);         // ~34V a 38V
-  const corrente = (6 + Math.random() * 3).toFixed(1);         // ~6A a 9A
-  const potencia = (tensao * corrente).toFixed(0);             // Watts
-  const temperatura = (42 + Math.random() * 8).toFixed(1);     // ~42°C a 50°C
+const API_URL = 'http://localhost:8080/api/paineis';
 
-  return { tensao, corrente, potencia, temperatura };
+
+async function carregarDados() {
+  try {
+    const response = await fetch(API_URL);
+    if (!response.ok) throw new Error(`Status: ${response.status}`);
+
+    const dados = await response.json();
+    atualizarTela(dados);
+  } catch (erro) {
+    console.error('Erro na conexão com o Java:', erro);
+  }
 }
 
 
-const ctx = document.getElementById('graficoSolar').getContext('2d');
-const graficoSolar = new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: [],
-    datasets: [{
-      label: 'Potência Gerada (W)',
-      data: [],
-      borderColor: '#f39c12',
-      backgroundColor: 'rgba(243, 156, 18, 0.1)',
-      fill: true,
-      tension: 0.3
-    }]
-  },
-  options: {
-    responsive: true,
-    scales: {
-      y: { beginAtZero: false }
+function atualizarTela(paineis) {
+
+  paineis.forEach((painel) => {
+    const card = document.getElementById(`painel-${painel.id}`);
+    if (card) {
+      card.querySelector('.temperatura').innerText = `${painel.temperatura} °C`;
+      card.querySelector('.potencia').innerText = `${painel.potencia} kW`;
+
+
+      if (painel.temperatura > 60) {
+        card.classList.add('alerta-critico');
+      } else {
+        card.classList.remove('alerta-critico');
+      }
     }
-  }
-});
-
-
-function atualizarDashboard() {
-  const dados = gerarDadosSolares();
-
-  // Atualiza os cards numericos
-  document.getElementById('potencia').innerText = dados.potencia;
-  document.getElementById('tensao').innerText = dados.tensao;
-  document.getElementById('corrente').innerText = dados.corrente;
-  document.getElementById('temperatura').innerText = dados.temperatura;
-
-
-  const horarioAtual = new Date().toLocaleTimeString();
-
-  graficoSolar.data.labels.push(horarioAtual);
-  graficoSolar.data.datasets[0].data.push(dados.potencia);
-
-
-  if (graficoSolar.data.labels.length > 10) {
-    graficoSolar.data.labels.shift();
-    graficoSolar.data.datasets[0].data.shift();
-  }
-
-  graficoSolar.update();
+  });
 }
 
 
-atualizarDashboard();
-setInterval(atualizarDashboard, 2000);
+setInterval(carregarDados, 3000);
+document.addEventListener('DOMContentLoaded', carregarDados);
+
+// (Mantenha aqui embaixo a criação do gráfico Chart.js se você já tiver!)
