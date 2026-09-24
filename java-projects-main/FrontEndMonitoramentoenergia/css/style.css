@@ -1,0 +1,103 @@
+
+.secao {
+  margin-bottom: 30px;
+}
+
+.secao h2 {
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 5px;
+}
+
+/* Métricas do Topo (4 cards alinhados) */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+/* Grade dos Painéis Solares */
+.paineis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+/* Estilo padronizado dos Cards Gerais */
+.card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 15px 20px;
+  border-left: 5px solid #ffa500;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.metric-card h3 {
+  font-size: 0.85rem;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.metric-card .valor {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #222;
+  margin-top: 8px;
+}
+
+/* --- ESTILOS VISUAIS DOS PAINÉIS SOLARES (Novos) --- */
+.painel-card {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  color: #fff;
+  border-left: 5px solid #3b82f6; /* Azul padrão inicial */
+  transition: all 0.3s ease;
+}
+
+.painel-card h3 {
+  color: #38bdf8;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.painel-card p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  margin: 4px 0;
+}
+
+.painel-card .posicao {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+/* Classes dinâmicas de Alerta de Temperatura aplicada pelo JS */
+.painel-card.normal {
+  border-left-color: #22c55e; /* Verde - Temperatura ideal */
+}
+
+.painel-card.atencao {
+  border-left-color: #eab308; /* Amarelo - A aquecer */
+}
+
+.painel-card.critico {
+  border-left-color: #ef4444; /* Vermelho - Sobreaquecido */
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+}
+/* -------------------------------------------------- */
+
+.grafico-container {
+  position: relative;
+  height: 350px; 
+  width: 100%;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+#graficoSolar {
+  width: 100% !important;
+  height: 280px !important;
+}
