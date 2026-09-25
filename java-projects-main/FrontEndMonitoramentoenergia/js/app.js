@@ -22,44 +22,39 @@ export default function App() {
     return () => clearInterval(intervalo);
   }, []);
 
-  useEffect(() => {
-    async function carregarDados() {
-      try {
-        const [resPaineis, resTelemetria] = await Promise.all([
-          fetch('http://localhost:8080/paineis'),
-          fetch('http://localhost:8080/telemetria')
-        ]);
 
-        if (!resPaineis.ok || !resTelemetria.ok) {
-          throw new Error('Erro ao buscar dados do Spring Boot');
-        }
+async function carregarDados() {
+  try {
+    const [resPaineis, resTelemetria] = await Promise.all([
+      fetch(API_PAINEIS),
+      fetch(API_TELEMETRIA)
+    ]);
 
-        const dadosPaineis = await resPaineis.json();
-        const dadosTelemetria = await resTelemetria.json();
-
-        setPaineis(dadosPaineis);
-        setTelemetria(dadosTelemetria);
-
-        if (dadosTelemetria.length > 0) {
-          const ultima = dadosTelemetria[dadosTelemetria.length - 1];
-          const pot = ultima.energiaGerada ?? ultima.energiagerada ?? ultima.potencia ?? 0;
-          setMetricaAtual({
-            potencia: pot,
-            tensao: ultima.tensao ?? 220,
-            corrente: ultima.corrente ?? (pot / 220).toFixed(2),
-            temperatura: ultima.temperatura ?? 25
-          });
-        }
-      } catch (erro) {
-        console.error('Erro na integração:', erro);
-      }
+    if (!resPaineis.ok || !resTelemetria.ok) {
+      throw new Error('Erro ao buscar dados das APIs');
     }
 
-    carregarDados();
-  }, []);
+    const paineis = await resPaineis.json();
+    const telemetria = await resTelemetria.json();
+
+    atualizarPainelEGrid(paineis);
+    atualizarGraficoHistorico(telemetria);
+    
+  } catch (erro) {
+    console.error('Erro na integração:', erro);
+  }
+}
+
+// Executa assim que a página carrega pela primeira vez
+document.addEventListener('DOMContentLoaded', () => {
+  carregarDados();
+
+  // Configura o frontend para ir buscar novos dados à API do Spring Boot a cada 5 segundos
+  setInterval(carregarDados, 5000);
+});
 
   return (
-    <div style={{ backgroundColor: '#0f172a', color: '#f8fafc', minHeight: '100vh', padding: '30px 20px', fontFamily: 'system-ui, sans-serif' }}>
+    <div style={{ backgroundColor: '#e7ecf8', color: '#f8fafc', minHeight: '100vh', padding: '30px 20px', fontFamily: 'system-ui, sans-serif' }}>
       
       <header style={{ textAlign: 'center', marginBottom: '40px' }}>
         <h1 style={{ fontSize: '2rem', color: '#ffffff', marginBottom: '5px' }}>Sistema de Monitoramento Solar</h1>
@@ -114,7 +109,7 @@ export default function App() {
                     />
                   </div>
 
-                  <div style={{ background: '#0f172a', padding: '12px', borderRadius: '8px', border: '1px solid #334155', fontSize: '0.9rem' }}>
+                  <div style={{ background: '#e0e1e2', padding: '12px', borderRadius: '8px', border: '1px solid #d5d9df', fontSize: '0.9rem' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
                       <span style={{ color: '#94a3b8' }}>Capacidade Máx:</span>
                       <span style={{ color: '#f8fafc', fontWeight: '600' }}>{painel.capacidadeMax} W</span>

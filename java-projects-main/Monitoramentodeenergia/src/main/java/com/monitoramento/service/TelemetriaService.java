@@ -23,7 +23,7 @@ public class TelemetriaService {
 
     private final Random random = new Random();
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 60000)
     public void geradorDeTelemetria() {
         List<Paineis> paineis = painelRepository.findAll();
 
@@ -38,8 +38,7 @@ public class TelemetriaService {
             double energiaRaw = 100.0 + (400.0 - 100.0) * random.nextDouble();
             double energiaArredondada = Math.round(energiaRaw * 100.0) / 100.0;
 
-            t.setTemperatura(temperaturaArredondada);
-            t.setEnergiagerada(energiaArredondada);
+            
 
             t.setTemperatura(35.0 + (85.0 - 35.0) * random.nextDouble());
             t.setEnergiagerada(100.0 + (400.0 - 100.0) * random.nextDouble());
