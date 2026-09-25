@@ -31,6 +31,16 @@ public class TelemetriaService {
             Telemetria t = new Telemetria();
             t.setPainel(painel);
             t.setDatahora(LocalDateTime.now());
+
+            double temperaturaRaw = 35.0 + (85.0 - 35.0) * random.nextDouble();
+            double temperaturaArredondada = Math.round(temperaturaRaw * 100.0) / 100.0;
+
+            double energiaRaw = 100.0 + (400.0 - 100.0) * random.nextDouble();
+            double energiaArredondada = Math.round(energiaRaw * 100.0) / 100.0;
+
+            t.setTemperatura(temperaturaArredondada);
+            t.setEnergiagerada(energiaArredondada);
+
             t.setTemperatura(35.0 + (85.0 - 35.0) * random.nextDouble());
             t.setEnergiagerada(100.0 + (400.0 - 100.0) * random.nextDouble());
 

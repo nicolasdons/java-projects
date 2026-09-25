@@ -6,13 +6,21 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+<<<<<<< HEAD
         <module name="monitoramento" />
+=======
+        <module name="ProjetoJava" />
+>>>>>>> 9d73894f1ce5eb91ca66255ff918c9795e8bd8b3
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+<<<<<<< HEAD
       <module name="monitoramento" options="-parameters" />
+=======
+      <module name="ProjetoJava" options="-parameters" />
+>>>>>>> 9d73894f1ce5eb91ca66255ff918c9795e8bd8b3
     </option>
   </component>
 </project>
